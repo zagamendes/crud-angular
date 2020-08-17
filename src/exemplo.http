@@ -1,0 +1,2 @@
+GET  http://localhost:3000/eventos?page=2 
+content-type: application/json

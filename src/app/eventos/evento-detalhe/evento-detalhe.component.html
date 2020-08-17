@@ -1,0 +1,32 @@
+    <!-- Card -->
+    <div class="card" *ngIf="obsevableEvento | async as evento" >
+
+            
+        
+        <!-- Card content -->
+        <div class="card-body">
+        
+        <!-- Title -->
+            <h4 class="card-title">{{evento.titulo }}</h4>
+            <!-- Text -->
+            <div class="card-text">
+                <p>{{ evento?.descricao.substr(0,160) }}...</p>
+                <p><span class="fas fa-map-marker-alt"></span> {{ evento.endereco.cidade }}</p>
+                <p><span class="fas fa-building"></span> {{ evento.endereco.rua }}</p>
+                <p><span class="fas fa-clock"></span> {{ evento.endereco.horario }}</p>
+                
+            </div>
+            <!-- Button -->
+            <div class="row">
+                <div class="col-sm-6">
+                    <a [routerLink]="['/',evento?.id]" class="btn btn-primary text-uppercase font-weight-bold"><span class="fas fa-edit"></span> Editar</a>
+                </div>
+                <div class="col-sm-6">
+                    <button (click)="excluir(evento?.id)"  class="btn btn-danger text-uppercase font-weight-bold"><span class="fas fa-trash"></span> Excluir</button>
+                </div>
+            </div>
+        
+        </div>
+        
+    </div>
+    <!-- Card -->

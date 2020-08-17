@@ -1,0 +1,111 @@
+<div class="container">
+    
+    <form #form="ngForm"   (ngSubmit)="onSubmit(form)">
+        
+        <div class="row">
+
+            <div class="col-6">
+                <div class="md-form form-group">
+                    <input mdbInput type="text" id="titulo" class="form-control"  name="titulo" [(ngModel)]="evento.titulo" #titulo="ngModel" required>
+                    <label for="titulo" class="">Título</label>
+                    <app-mensagem-erro  mensagemErro="Nome Obrigatório!" [mostraErro]="isCampoValido(titulo)"></app-mensagem-erro>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="md-form form-group">
+                    <input mdbInput type="text" id="tags" class="form-control" name="tags" [(ngModel)]="evento.tags" #tags="ngModel" required>
+                    <label for="tags" class="">Tags</label>
+                    <app-mensagem-erro  mensagemErro="Digite pelo menos uma tag!" [mostraErro]="isCampoValido(tags)"></app-mensagem-erro>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-12">
+                <div class="md-form">
+                    <textarea mdbInput rows="2" type="text" id="descricao" class="md-textarea form-control" name="descricao" [(ngModel)]="evento.descricao" #descricao="ngModel" required ></textarea>
+                    <label for="descrricao">Descrição do evento</label>
+                  </div>
+                
+            </div>
+            
+        </div>
+
+        <div ngModelGroup="endereco">
+            <div class="row">
+                <div class="col-6">
+                    <div class="md-form">
+                        <input type="date" class="form-control" name="data" [(ngModel)]="evento.endereco.data" #data="ngModel" required>
+                        <label>Data</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="md-form">
+                        <input type="time" class="form-control" name="horario" [(ngModel)]="evento.endereco.horario" #horario="ngModel" required>
+                        <label>Horário</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="md-form">
+                        <mdb-icon fas icon="map-marker-alt" class="prefix"></mdb-icon>
+ 
+                        <input mdbInput type="tel" class="form-control" (blur)="buscaCep(cep,form)"  id="cep" name="cep" [(ngModel)]="evento.endereco.cep" #cep="ngModel" required>
+                        <label for="cep">CEP</label>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="md-form">
+                        
+                        <input mdbInput type="tel" class="form-control" id="numero" name="numero" [(ngModel)]="evento.endereco.numero" #numero="ngModel" required>
+                        <label for="numero">Número</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-3">
+                    <div class="md-form">
+                        <mdb-icon fas icon="building" class="prefix"></mdb-icon>
+                        <input mdbInput type="text" class="form-control" id="rua" name="rua" [(ngModel)]="evento.endereco.rua" #rua="ngModel" required>
+                        <label for="rua">Rua</label>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="md-form">
+                        <input mdbInput type="text" class="form-control" id="bairro" name="bairro" [(ngModel)]="evento.endereco.bairro" #bairro="ngModel" required>
+                        <label for="bairro">Bairro</label>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="md-form">
+                        <input mdbInput type="text" class="form-control" id="cidade" name="cidade" [(ngModel)]="evento.endereco.cidade" #cidade="ngModel" required>
+                        <label for="cidade">Cidade</label>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="md-form">
+                        <input mdbInput type="text" class="form-control" id="estado" name="estado" (focus)="limpaCampo(form)" [(ngModel)]="evento.endereco.estado" #estado="ngModel" required>
+                        <label for="estado">Estado</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <input type="hidden" [(ngModel)]="evento.id" #id="ngModel" name="id">
+                <button class="btn btn-primary text-uppercase font-weight-bold btn-block" [disabled]="form.invalid"><span class="fas fa-check"></span> Salvar </button>
+            </div>
+            <div class="col-6">
+                <button type="button" class="btn btn-danger text-uppercase font-weight-bold btn-block"><span class="fas fa-times"></span> Cancelar </button>
+            </div>
+            
+        </div>
+        
+    </form>
+
+</div>

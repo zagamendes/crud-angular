@@ -1,0 +1,32 @@
+<!--Navbar-->
+<mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark bg-primary" [containerInside]="false" *ngIf="mostraMenu" >
+
+    <!-- Navbar brand -->
+    <mdb-navbar-brand><a class="navbar-brand" routerLink="/">Navbar</a></mdb-navbar-brand>
+  
+    <!-- Collapsible content -->
+    <links>
+  
+      <!-- Links -->
+      <ul class="navbar-nav mr-auto">
+        
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link waves-light" mdbWavesEffect routerLink="eventos">Eventos</a>
+        </li>
+        
+  
+        
+  
+      </ul>
+      <!-- Links -->
+  
+    </links>
+    <!-- Collapsible content -->
+  
+  </mdb-navbar>
+  <!--/.Navbar-->
+
+
+<div class="container">
+<router-outlet></router-outlet>
+</div>

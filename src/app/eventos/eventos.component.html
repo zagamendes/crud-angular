@@ -1,0 +1,20 @@
+<div class="row mt-3">
+    <div class="col-sm-6">
+        <ul class="list-group" *ngIf="eventos$ | async as eventos; else loading">
+
+            <li routerLinkActive="active" *ngFor="let evento of eventos" class="list-group-item">
+                <a [routerLink]="[evento.id]" class="">{{ evento.titulo }}</a>
+            </li>
+
+        </ul>
+        <ng-template #loading>
+            <img src="https://media.giphy.com/media/swhRkVYLJDrCE/giphy.gif" alt="">
+        </ng-template>
+
+    </div>
+
+    <!-- Restante do código -->
+    <div class="col-sm-4">
+        <router-outlet></router-outlet>
+    </div>
+</div>
